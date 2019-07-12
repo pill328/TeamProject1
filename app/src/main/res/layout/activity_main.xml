@@ -1,46 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="9">
+        android:id="@+id/map"
+        tools:context=".MainActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:elevation="10dp"
+        android:background="@drawable/white_border"
+        android:id="@+id/relLayout1">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/ic_magnify"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_magnify"/>
 
         <EditText
-            android:id="@+id/editText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:hint="지역을 입력하세요" />
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/ic_magnify"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:id="@+id/input_search"
+            android:background="@null"
+            android:hint="  지역을 입력하세요"
+            android:imeOptions="actionSearch"/>
 
-        <Button
-            android:id="@+id/search"
-            android:onClick="onSearchButtonClicked"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="검색" />
 
-        <Button
-            android:id="@+id/location"
-            android:onClick="onLocationButtonClicked"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="현위치" />
+    </RelativeLayout>
 
-    </LinearLayout>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/relLayout1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/ic_gps"
+        android:src="@drawable/ic_gps"/>
 
-    <fragment
-        android:id="@+id/googleMap"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.MapFragment" />
-
-</LinearLayout>
+</RelativeLayout>
